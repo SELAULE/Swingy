@@ -1,0 +1,10 @@
+Model/Heros/Hero.class
+Model/Heros/HeroStats.class
+Controller/Writing.class
+main.class
+View/drawMap.class
+View/printing.class
+Controller/FileUpload.class
+Model/Heros/Villains.class
+Controller/KeyHandle.class
+View/Interface.class

@@ -2,6 +2,7 @@ package Model.Heros;
 
 import View.drawMap;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -14,6 +15,10 @@ public class Hero {
     private String Defense;
     private int xCoordinates;
     private int yCoordinates;
+    private String[] HeroClass = {"Siyan", "GOD", "Angel", "GrandPriest"};
+    private ArrayList<Villains> villains = new ArrayList<Villains>();
+//    Villains scaryNiggahs = new Villains();
+
 
     public int getxCoordinates() {
         return this.xCoordinates;
@@ -53,7 +58,7 @@ public class Hero {
     }
 
     public void setLevel(int level) {
-        if (level < 1) {
+        if (level < 0) {
             throw new IllegalArgumentException();
         }
         this.level = level;
@@ -83,17 +88,6 @@ public class Hero {
         this.Defense = defense;
     }
 
-//    public Hero(String heroName, String heroClass, int level, int experience, String attack, String defense) {
-//        this.heroName = heroName;
-//        this.heroClass = heroClass;
-//        this.level = level;
-//        Experience = experience;
-//        Attack = attack;
-//        Defense = defense;
-//    }
-
-
-
 
     public void keyPressed() {
 
@@ -104,30 +98,104 @@ public class Hero {
             System.out.println("Let's get moving ");
             String command = input.next();
 
-            if ("exit".equals(command)) {
-                System.out.println("Pussy niggar left the game!!");
-                loop = false;
-                System.exit(0);
-            } else if ("8".equals(command) || "w".equals(command) || "north".equals(command)) {
-                setxCoordinates(getxCoordinates() - 1);
-                drawing.drawingTheMap(this);
-            } else if ("4".equals(command) || "a".equals(command) || "east".equals(command)) {
-                setyCoordinates(getyCoordinates() - 1);
-                drawing.drawingTheMap(this);
-            } else if ("6".equals(command) || "d".equals(command) || "west".equals(command)) {
-                setyCoordinates(getyCoordinates() + 1);
-                drawing.drawingTheMap(this);
-            } else if ("2".equals(command) || "s".equals(command) || "south".equals(command)) {
-                setxCoordinates(getxCoordinates() + 1);
-                drawing.drawingTheMap(this);
+            switch (command) {
+                case "exit":
+                    System.out.println("Pussy niggar left the game!!");
+                    loop = false;
+                    System.exit(0);
+
+                case "8":
+                case "w":
+                case "north":
+                    setxCoordinates(getxCoordinates() - 1);
+//                    if ()
+                    drawing.drawingTheMap(this);
+                    break;
+
+                case "4":
+                case "a":
+                case "east":
+                    setyCoordinates(getyCoordinates() - 1);
+                    drawing.drawingTheMap(this);
+                    break;
+
+                case "6":
+                case "d":
+                case "west":
+                    setyCoordinates(getyCoordinates() + 1);
+                    drawing.drawingTheMap(this);
+                    break;
+
+                case "2":
+                case "s":
+                case "south":
+                    setxCoordinates(getxCoordinates() + 1);
+                    drawing.drawingTheMap(this);
+                    break;
             }
         }
 //        input.close();
+    }
+
+    public void selectedHero(int index, String[] content) {
+//        Hero theHero = new Hero();
+        drawMap drawing = new drawMap();
+        System.out.println(content[index]);
+        content = content[index].split(",");
+
+        this.setHeroName(content[0]);
+        this.setHeroClass(content[1]);
+        this.setLevel(Integer.parseInt(content[2]));
+        this.setExperience(Integer.parseInt(content[3]));
+        this.setAttack(content[4]);
+        this.setDefense(content[5]);
+        this.setxCoordinates(drawing.mapSize(this.getLevel())/2);
+        this.setyCoordinates(drawing.mapSize(this.getLevel())/2);
+
+        drawing.drawingTheMap(this);
+//        this.PlaceVillain(villains);
+        this.keyPressed();
     }
 
     public int randomVillan(int limit) {
         Random rand = new Random();
         int result = rand.nextInt(limit);
         return result;
+    }
+
+    public void PlaceVillain(Villains villain) {
+        villains.add(villain);
+//        System.out.println(villain.Coordinates.get_yPosition());
+//        System.out.println(villain.Coordinates.get_yPosition());
+
+    }
+
+    public void killVillain(Villains villain) {
+        villains.remove(villain);
+    }
+
+    public boolean levelUp(int level)
+    {
+//
+        int XP = (int) ((level * 1000) + Math.pow(level - 1, 2) * 450);
+        if (XP == 1000) {
+            this.setLevel(this.getLevel() + 1);
+        }
+        else if (XP == 2450) {
+            this.setLevel(this.getLevel() + 2);
+        }
+        else if (XP == 4800) {
+            this.setLevel(this.getLevel() + 3);
+        }
+        else if (XP == 8050) {
+            this.setLevel(this.getLevel() + 4);
+        }
+        else if(XP == 12200) {
+            this.setLevel(this.getLevel() + 5);
+        }
+        else {
+            System.out.println("Still the same");
+        }
+        return false;
     }
 }

@@ -30,7 +30,8 @@ public class main {
                 String[] contents = reader.OpenFile("./heroes.txt");
                 drawing.selectHero(contents);
                 int index = input.nextInt();
-                drawing.selectedHero(index, contents);
+                Hero hero = new Hero();
+                hero.selectedHero(index, contents);
 //                Hero hero = drawing.newHero();
 //                hero.keyPressed();
             }

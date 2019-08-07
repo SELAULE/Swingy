@@ -3,8 +3,10 @@ Model/Heros/HeroStats.class
 Controller/Writing.class
 main.class
 View/drawMap.class
+Model/Heros/Character.class
 View/printing.class
 Controller/FileUpload.class
 Model/Heros/Villains.class
 Controller/KeyHandle.class
+Model/Heros/Coordinates.class
 View/Interface.class

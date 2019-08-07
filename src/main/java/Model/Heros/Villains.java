@@ -1,33 +1,8 @@
 package Model.Heros;
 
-public class Villains {
-    private int xCoordinates;
+public class Villains extends Character{
 
-    public int getxCoordinates() {
-        return xCoordinates;
+    public Villains(String _heroName, String _heroClass, String _Defense, int _level, int _experiance, String _attack, Coordinates _coordinates) {
+        super(_heroName, _heroClass, _Defense, _level, _experiance, _attack, _coordinates);
     }
-
-    public int getyCoordinates() {
-        return yCoordinates;
-    }
-
-    public char getVillian() {
-        return Villian;
-    }
-
-    private int yCoordinates;
-    private char Villian;
-
-    public void setxCoordinates(int xCoordinates) {
-        this.xCoordinates = xCoordinates;
-    }
-
-    public void setyCoordinates(int yCoordinates) {
-        this.yCoordinates = yCoordinates;
-    }
-
-    public void setVillian(char villian) {
-        Villian = villian;
-    }
-
 }

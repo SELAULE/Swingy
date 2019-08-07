@@ -4,14 +4,15 @@ import Controller.FileUpload;
 import Controller.KeyHandle;
 import Model.Heros.Hero;
 import Model.Heros.Villains;
+//import Model.Heros.Villains;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
-import static com.sun.java.accessibility.util.AWTEventMonitor.addKeyListener;
 
 public class drawMap {
 
@@ -24,9 +25,20 @@ public class drawMap {
        for (int i = 0; i < d.mapSize(theHero.getLevel()); i++) {
            System.out.print('.');
            for (int j = 0; j < d.mapSize(theHero.getLevel()); j++) {
-
+               if (theHero.getxCoordinates() == 0) {
+                   System.out.println("We on the top edge");
+               }
+               else if (theHero.getxCoordinates() == d.mapSize(theHero.getLevel()) - 1) {
+                   System.out.println("We on the left edge");
+               }
                if (i == theHero.getxCoordinates() && j == theHero.getyCoordinates())
                {
+                   if (theHero.getxCoordinates() == 0) {
+                       System.out.println("We on the top edge");
+                   }
+                   else if (theHero.getxCoordinates() == d.mapSize(theHero.getLevel()) - 1) {
+                       System.out.println("We on the left edge");
+                   }
                    System.out.print('H');
                }
                else if (i == theHero.randomVillan(this.mapSize(theHero.getLevel())) && j == theHero.randomVillan(this.mapSize(theHero.getLevel())))
@@ -46,7 +58,7 @@ public class drawMap {
 
 //   public void  gameInit(int level, int x, int y) {
 //       drawingTheMap(level);
-////       placingHero(x, y);
+//       placingHero(x, y);
 //   }
 //
 
@@ -71,7 +83,7 @@ public class drawMap {
     public Hero newHero() {
         Hero theHero = new Hero();
         Scanner input = new Scanner(System.in);
-
+        printing printing = new printing();
         drawMap drawing = new drawMap();
 
         System.out.println("Name of the hero");
@@ -80,7 +92,7 @@ public class drawMap {
         System.out.println("Name of the heroClass");
         theHero.setHeroClass(input.next());
 
-        theHero.setLevel(1);
+        theHero.setLevel(0);
 
         theHero.setExperience(0);
 
@@ -92,49 +104,25 @@ public class drawMap {
 
         theHero.setxCoordinates(this.mapSize(theHero.getLevel())/2);
         theHero.setyCoordinates(this.mapSize(theHero.getLevel())/2);
-
-        System.out.println("-------------------------------");
-        System.out.println("Hero name is : " + theHero.getHeroName());
-        System.out.println("Hero class is : " + theHero.getHeroClass());
-        System.out.println("The Level is : " + theHero.getLevel());
-        System.out.println("The Experience is : " + theHero.getExperience());
-        System.out.println("Hero Attack is : " + theHero.getAttack());
-        System.out.println("Hero Defense is : " + theHero.getDefense());
-
+        printing.Info(theHero);
         drawing.drawingTheMap(theHero);
 //        input.close();
         return(theHero);
     }
 
-    public void selectedHero(int index, String[] content) {
-        Hero theHero = new Hero();
-        System.out.println(content[index]);
-        content = content[index].split(",");
 
-        theHero.setHeroName(content[0]);
-        theHero.setHeroClass(content[1]);
-        theHero.setLevel(Integer.parseInt(content[2]));
-        theHero.setExperience(Integer.parseInt(content[3]));
-        theHero.setAttack(content[4]);
-        theHero.setDefense(content[5]);
-        theHero.setxCoordinates(this.mapSize(theHero.getLevel())/2);
-        theHero.setyCoordinates(this.mapSize(theHero.getLevel())/2);
-
-        drawingTheMap(theHero);
-        theHero.keyPressed();
-    }
 
 //    public static void main(String args[]) {
 //
 //        printing printing = new printing();
 //        FileUpload reader = new FileUpload();
 //        Scanner input = new Scanner(System.in);
-//
-////        KeyHandle handler = new KeyHandle();
 //        drawMap drawing = new drawMap();
+//        Hero theHero = new Hero();
 //        printing.welcome();
 //        System.out.println("1) Create a Hero");
 //        System.out.println("2) Select a Hero");
+//        theHero.levelUp(3);
 //
 //        int number = input.nextInt();
 //        try {
@@ -148,7 +136,7 @@ public class drawMap {
 //                String[] contents = reader.OpenFile("./heroes.txt");
 //                drawing.selectHero(contents);
 //                int index = input.nextInt();
-//                drawing.selectedHero(index, contents);
+//                theHero.selectedHero(index, contents);
 ////                Hero hero = drawing.newHero();
 ////                hero.keyPressed();
 //            }

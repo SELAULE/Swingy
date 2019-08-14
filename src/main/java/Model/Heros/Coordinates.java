@@ -1,6 +1,11 @@
 package Model.Heros;
 
+import lombok.Getter;
+import lombok.Setter;
+@Getter
+@Setter
 public class Coordinates {
+
         private int _yPosition;
         private int _xPosition;
 

@@ -25,18 +25,18 @@ public class drawMap {
        for (int i = 0; i < d.mapSize(theHero.getLevel()); i++) {
            System.out.print('.');
            for (int j = 0; j < d.mapSize(theHero.getLevel()); j++) {
-               if (theHero.getxCoordinates() == 0) {
+               if (theHero.getXCoordinates() == 0) {
                    System.out.println("We on the top edge");
                }
-               else if (theHero.getxCoordinates() == d.mapSize(theHero.getLevel()) - 1) {
+               else if (theHero.getXCoordinates() == d.mapSize(theHero.getLevel()) - 1) {
                    System.out.println("We on the left edge");
                }
-               if (i == theHero.getxCoordinates() && j == theHero.getyCoordinates())
+               if (i == theHero.getXCoordinates() && j == theHero.getXCoordinates())
                {
-                   if (theHero.getxCoordinates() == 0) {
+                   if (theHero.getXCoordinates() == 0) {
                        System.out.println("We on the top edge");
                    }
-                   else if (theHero.getxCoordinates() == d.mapSize(theHero.getLevel()) - 1) {
+                   else if (theHero.getXCoordinates() == d.mapSize(theHero.getLevel()) - 1) {
                        System.out.println("We on the left edge");
                    }
                    System.out.print('H');
@@ -70,7 +70,7 @@ public class drawMap {
             for (int i = 0; i < matches.length; i++) {
                 String[] matche = matches[i].split(",");
                 for (int j = 0; j < i; j++) {
-                    System.out.println(i + ")" + matche[j]);
+                    System.out.println(i + ") " + matche[j]);
                 }
             }
             System.out.print('\n');
@@ -85,12 +85,20 @@ public class drawMap {
         Scanner input = new Scanner(System.in);
         printing printing = new printing();
         drawMap drawing = new drawMap();
+        String classHero[] = {"Siyan", "GOD", "Angel", "GrandPriest"};
 
         System.out.println("Name of the hero");
         theHero.setHeroName(input.next());
 
         System.out.println("Name of the heroClass");
-        theHero.setHeroClass(input.next());
+        for (int i = 0; i < classHero.length; i++) {
+            System.out.println(i + ") " + classHero[i]);
+//            String[] matche = classHero[i].split(",");
+//            for (int j = 0; j < i; j++) {
+//                System.out.println(i + ")" + matche[j]);
+//            }
+        }
+        theHero.setHeroClass(classHero[input.nextInt()]);
 
         theHero.setLevel(0);
 
@@ -102,8 +110,8 @@ public class drawMap {
         System.out.println("Name of Defense");
         theHero.setDefense(input.next());
 
-        theHero.setxCoordinates(this.mapSize(theHero.getLevel())/2);
-        theHero.setyCoordinates(this.mapSize(theHero.getLevel())/2);
+        theHero.setXCoordinates(this.mapSize(theHero.getLevel())/2);
+        theHero.setXCoordinates(this.mapSize(theHero.getLevel())/2);
         printing.Info(theHero);
         drawing.drawingTheMap(theHero);
 //        input.close();

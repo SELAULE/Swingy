@@ -13,7 +13,7 @@ public class KeyHandle extends Hero {
     {
 
 
-        System.out.println("This is Y " + getyCoordinates() + '\n' + "This is X " + getxCoordinates());
+        System.out.println("This is Y " + getYCoordinates() + '\n' + "This is X " + getXCoordinates());
         System.out.println("Press something ");
         String command = input.next();
         System.out.println(command);

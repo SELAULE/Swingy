@@ -1,12 +1,19 @@
 package Model.Heros;
 
 import View.drawMap;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
+import static View.printing.*;
+
+@Getter
+@Setter
 public class Hero {
+
     private String heroName;
     private String heroClass;
     private int level;
@@ -15,82 +22,12 @@ public class Hero {
     private String Defense;
     private int xCoordinates;
     private int yCoordinates;
-    private String[] HeroClass = {"Siyan", "GOD", "Angel", "GrandPriest"};
+    private String[] HeroClass;
     private ArrayList<Villains> villains = new ArrayList<Villains>();
 //    Villains scaryNiggahs = new Villains();
 
 
-    public int getxCoordinates() {
-        return this.xCoordinates;
-    }
-
-    public void setxCoordinates(int xCoordinates) {
-        this.xCoordinates = xCoordinates;
-    }
-
-    public int getyCoordinates() {
-        return this.yCoordinates;
-    }
-
-    public void setyCoordinates(int yCoordinates) {
-        this.yCoordinates = yCoordinates;
-    }
-
-    public String getHeroName() {
-        return this.heroName;
-    }
-
-    public void setHeroName(String heroName) {
-        this.heroName = heroName;
-    }
-
-    public String getHeroClass() {
-        return this.heroClass;
-    }
-
-    public void setHeroClass(String heroClass) {
-        this.heroClass = heroClass;
-    }
-
-    public int getLevel() {
-
-        return this.level;
-    }
-
-    public void setLevel(int level) {
-        if (level < 0) {
-            throw new IllegalArgumentException();
-        }
-        this.level = level;
-    }
-
-    public int getExperience() {
-        return this.Experience;
-    }
-
-    public void setExperience(int experience) {
-        this.Experience = experience;
-    }
-
-    public String getAttack() {
-        return this.Attack;
-    }
-
-    public void setAttack(String attack) {
-        this.Attack = attack;
-    }
-
-    public String getDefense() {
-        return this.Defense;
-    }
-
-    public void setDefense(String defense) {
-        this.Defense = defense;
-    }
-
-
     public void keyPressed() {
-
         Scanner input = new Scanner(System.in);
         drawMap drawing = new drawMap();
         boolean loop = true;
@@ -100,36 +37,39 @@ public class Hero {
 
             switch (command) {
                 case "exit":
-                    System.out.println("Pussy niggar left the game!!");
+                    gameOver();
                     loop = false;
                     System.exit(0);
 
                 case "8":
                 case "w":
                 case "north":
-                    setxCoordinates(getxCoordinates() - 1);
-//                    if ()
+                    setXCoordinates(getXCoordinates() - 1);
+                    clearScreen();
                     drawing.drawingTheMap(this);
                     break;
 
                 case "4":
                 case "a":
                 case "east":
-                    setyCoordinates(getyCoordinates() - 1);
+                    setYCoordinates(getYCoordinates() - 1);
+                    clearScreen();
                     drawing.drawingTheMap(this);
                     break;
 
                 case "6":
                 case "d":
                 case "west":
-                    setyCoordinates(getyCoordinates() + 1);
+                    setYCoordinates(getYCoordinates() + 1);
+                    clearScreen();
                     drawing.drawingTheMap(this);
                     break;
 
                 case "2":
                 case "s":
                 case "south":
-                    setxCoordinates(getxCoordinates() + 1);
+                    setXCoordinates(getXCoordinates() + 1);
+                    clearScreen();
                     drawing.drawingTheMap(this);
                     break;
             }
@@ -149,8 +89,8 @@ public class Hero {
         this.setExperience(Integer.parseInt(content[3]));
         this.setAttack(content[4]);
         this.setDefense(content[5]);
-        this.setxCoordinates(drawing.mapSize(this.getLevel())/2);
-        this.setyCoordinates(drawing.mapSize(this.getLevel())/2);
+        this.setXCoordinates(drawing.mapSize(this.getLevel())/2);
+        this.setYCoordinates(drawing.mapSize(this.getLevel())/2);
 
         drawing.drawingTheMap(this);
 //        this.PlaceVillain(villains);

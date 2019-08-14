@@ -1,6 +1,11 @@
 package Model.Heros;
 
+import lombok.Getter;
+import lombok.Setter;
+@Getter
+@Setter
 public class Character {
+
     protected String heroName;
     protected String heroClass;
     protected Coordinates Coordinates;

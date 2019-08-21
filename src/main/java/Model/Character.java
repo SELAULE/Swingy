@@ -1,4 +1,4 @@
-package Model.Heros;
+package Model;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,16 +11,19 @@ public class Character {
     protected Coordinates Coordinates;
     protected int level;
     protected int experiance;
-    protected String attack;
-    protected String Defense;
+    protected int attack;
+    protected int Defense;
 
-    public Character (String _heroName, String _heroClass, String _Defense, int _level, int _experiance, String _attack, Coordinates _coordinates) {
+    public Character(){
+
+    }
+    public Character (String _heroName, String _heroClass, int _Defense, int _experiance, int _attack, Coordinates _coordinates) {
         this.Coordinates = _coordinates;
         this.heroName = _heroName;
         this.heroClass = _heroClass;
         this.attack = _attack;
         this.Defense = _Defense;
         this.experiance = _experiance;
-        this.level = _level;
+//        this.level = _level;
     }
 }

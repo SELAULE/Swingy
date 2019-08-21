@@ -1,10 +1,8 @@
 package Controller;
 
 
-import Model.Heros.Hero;
-import View.drawMap;
+import Model.Hero;
 
-import java.awt.event.KeyEvent;
 import java.util.Scanner;
 
 public class KeyHandle extends Hero {

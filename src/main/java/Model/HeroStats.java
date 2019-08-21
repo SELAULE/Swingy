@@ -1,4 +1,4 @@
-package Model.Heros;
+package Model;
 
 public class HeroStats {
     private String Weapon;

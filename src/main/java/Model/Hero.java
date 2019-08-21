@@ -1,4 +1,4 @@
-package Model.Heros;
+package Model;
 
 import View.drawMap;
 import lombok.Getter;
@@ -12,24 +12,28 @@ import static View.printing.*;
 
 @Getter
 @Setter
-public class Hero {
+public class Hero extends Character {
 
     private String heroName;
     private String heroClass;
     private int level;
     private int Experience;
-    private String Attack;
-    private String Defense;
+    private int Attack;
+    private int Defense;
     private int xCoordinates;
     private int yCoordinates;
-    private String[] HeroClass;
-    private ArrayList<Villains> villains = new ArrayList<Villains>();
+    private String[] HeroType;
+
+    //get rid of arraylist
+    //private ArrayList<Villains> villains = new ArrayList<Villains>();
 //    Villains scaryNiggahs = new Villains();
 
 
     public void keyPressed() {
         Scanner input = new Scanner(System.in);
         drawMap drawing = new drawMap();
+
+
         boolean loop = true;
         while (loop) {
             System.out.println("Let's get moving ");
@@ -87,8 +91,8 @@ public class Hero {
         this.setHeroClass(content[1]);
         this.setLevel(Integer.parseInt(content[2]));
         this.setExperience(Integer.parseInt(content[3]));
-        this.setAttack(content[4]);
-        this.setDefense(content[5]);
+        this.setAttack(1200);
+        this.setDefense(1200);
         this.setXCoordinates(drawing.mapSize(this.getLevel())/2);
         this.setYCoordinates(drawing.mapSize(this.getLevel())/2);
 
@@ -103,16 +107,9 @@ public class Hero {
         return result;
     }
 
-    public void PlaceVillain(Villains villain) {
-        villains.add(villain);
-//        System.out.println(villain.Coordinates.get_yPosition());
-//        System.out.println(villain.Coordinates.get_yPosition());
 
-    }
 
-    public void killVillain(Villains villain) {
-        villains.remove(villain);
-    }
+    //move elsewhere
 
     public boolean levelUp(int level)
     {

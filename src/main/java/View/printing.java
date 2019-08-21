@@ -1,6 +1,6 @@
 package View;
 
-import Model.Heros.Hero;
+import Model.Hero;
 
 public class printing {
     public void welcome() {
@@ -14,7 +14,7 @@ public class printing {
     public void Info(Hero theHero) {
         System.out.println("-------------------------------");
         System.out.println("Hero name is : " + theHero.getHeroName());
-        System.out.println("Hero class is : " + theHero.getHeroClass());
+       // System.out.println("Hero class is : " + theHero.getHeroType().length);
         System.out.println("The Level is : " + theHero.getLevel());
         System.out.println("The Experience is : " + theHero.getExperience());
         System.out.println("Hero Attack is : " + theHero.getAttack());

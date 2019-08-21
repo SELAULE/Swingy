@@ -1,12 +1,12 @@
+/goinfre/nselaule/Desktop/Swingy/src/main/java/Model/Villains.java
 /goinfre/nselaule/Desktop/Swingy/src/main/java/Controller/Writing.java
-/goinfre/nselaule/Desktop/Swingy/src/main/java/Model/Heros/Coordinates.java
-/goinfre/nselaule/Desktop/Swingy/src/main/java/Model/Heros/Character.java
+/goinfre/nselaule/Desktop/Swingy/src/main/java/Model/Character.java
+/goinfre/nselaule/Desktop/Swingy/src/main/java/Model/Hero.java
 /goinfre/nselaule/Desktop/Swingy/src/main/java/View/printing.java
 /goinfre/nselaule/Desktop/Swingy/src/main/java/Controller/KeyHandle.java
-/goinfre/nselaule/Desktop/Swingy/src/main/java/Model/Heros/Villains.java
 /goinfre/nselaule/Desktop/Swingy/src/main/java/main.java
-/goinfre/nselaule/Desktop/Swingy/src/main/java/Model/Heros/HeroStats.java
 /goinfre/nselaule/Desktop/Swingy/src/main/java/View/drawMap.java
+/goinfre/nselaule/Desktop/Swingy/src/main/java/Model/HeroStats.java
+/goinfre/nselaule/Desktop/Swingy/src/main/java/Model/Coordinates.java
 /goinfre/nselaule/Desktop/Swingy/src/main/java/View/Interface.java
-/goinfre/nselaule/Desktop/Swingy/src/main/java/Model/Heros/Hero.java
 /goinfre/nselaule/Desktop/Swingy/src/main/java/Controller/FileUpload.java

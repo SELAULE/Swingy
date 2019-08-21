@@ -1,4 +1,4 @@
-package Model.Heros;
+package Model;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,7 +9,7 @@ public class Coordinates {
         private int _yPosition;
         private int _xPosition;
 
-        public Coordinates(int yPosition, int xPosition, Hero hero) {
+        public Coordinates(int yPosition, int xPosition) {
             if (yPosition < 0)
                 this._yPosition = 0;
             else
@@ -20,12 +20,5 @@ public class Coordinates {
                 this._xPosition = xPosition;
         }
 
-        public int get_xPosition() {
-            return this._xPosition;
-        }
-
-        public int get_yPosition() {
-            return _yPosition;
-        }
     }
 

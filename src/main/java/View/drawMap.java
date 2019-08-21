@@ -1,66 +1,76 @@
 package View;
 
-import Controller.FileUpload;
-import Controller.KeyHandle;
-import Model.Heros.Hero;
-import Model.Heros.Villains;
-//import Model.Heros.Villains;
+import Model.Coordinates;
+import Model.Hero;
+import Model.Villains;
+import lombok.Getter;
 
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
+@Getter
 
 public class drawMap {
 
-   public int mapSize(int level) {
-       return ((level - 1) * 5 + 10 - (level % 2));
-   }
+    private ArrayList<Villains> villains = new ArrayList<Villains>();
 
-   public void drawingTheMap(Hero theHero) {
-       drawMap d = new drawMap();
-       for (int i = 0; i < d.mapSize(theHero.getLevel()); i++) {
-           System.out.print('.');
-           for (int j = 0; j < d.mapSize(theHero.getLevel()); j++) {
-               if (theHero.getXCoordinates() == 0) {
-                   System.out.println("We on the top edge");
-               }
-               else if (theHero.getXCoordinates() == d.mapSize(theHero.getLevel()) - 1) {
-                   System.out.println("We on the left edge");
-               }
-               if (i == theHero.getXCoordinates() && j == theHero.getXCoordinates())
-               {
-                   if (theHero.getXCoordinates() == 0) {
-                       System.out.println("We on the top edge");
-                   }
-                   else if (theHero.getXCoordinates() == d.mapSize(theHero.getLevel()) - 1) {
-                       System.out.println("We on the left edge");
-                   }
-                   System.out.print('H');
-               }
-               else if (i == theHero.randomVillan(this.mapSize(theHero.getLevel())) && j == theHero.randomVillan(this.mapSize(theHero.getLevel())))
-               {
-                   System.out.print('V');
-               }
-               else
-                   System.out.print('.');
-           }
-           System.out.print('\n');
-       }
-   }
+    private int Mapsize;
 
-   public void initGame() {
+    public int mapSize(int level) {
+        this.Mapsize = ((level - 1) * 5 + 10 - (level % 2));
+        return ((level - 1) * 5 + 10 - (level % 2));
+    }
 
-   }
+    public void drawingTheMap(Hero theHero) {
+        drawMap d = new drawMap();
+        int l;
 
-//   public void  gameInit(int level, int x, int y) {
-//       drawingTheMap(level);
-//       placingHero(x, y);
-//   }
-//
+        for (int i = 0; i < d.mapSize(theHero.getLevel()); i++) {
+            for (int j = 0; j < d.mapSize(theHero.getLevel()); j++) {
+                if (i == theHero.getYCoordinates() && j == theHero.getXCoordinates()) {
+                    System.out.print('H');
+                } else if ((l = checkVill(villains, i, j)) > -1) {
+                    System.out.print('V');
+                } else
+                    System.out.print('.');
+            }
+            System.out.print('\n');
+        }
+    }
+
+    public void initGame() {
+
+    }
+
+    public void fight(Hero hero, Villains villains) {
+        int continueFight = 0;
+        Random rand = new Random();
+        int turn = rand.nextInt(1);
+        while (continueFight < 5) {
+            if (turn == 1) {
+                System.out.println("Heros turn");
+                System.out.println("Before " + villains.getDefense());
+                villains.setDefense(villains.getDefense() - hero.getAttack());
+                if (villains.getDefense() <= 0) {
+                    System.out.println("Heros Won");
+                    break;
+                }
+                turn = 0;
+            }
+            else {
+                System.out.println("Villains turn");
+                System.out.println("Before " + hero.getDefense());
+                hero.setDefense(hero.getDefense() - villains.getAttack());
+                if (villains.getDefense() <= 0) {
+                    System.out.println("Villain Won");
+                    break;
+                }
+                turn = 1;
+            }
+            continueFight++;
+        }
+    }
 
 
     public void selectHero(String[] content) {
@@ -76,7 +86,7 @@ public class drawMap {
             System.out.print('\n');
             System.out.println("Select a Hero");
         } catch (Exception e) {
-         System.out.println(e.toString());
+            System.out.println(e.toString());
         }
     }
 
@@ -93,66 +103,68 @@ public class drawMap {
         System.out.println("Name of the heroClass");
         for (int i = 0; i < classHero.length; i++) {
             System.out.println(i + ") " + classHero[i]);
-//            String[] matche = classHero[i].split(",");
-//            for (int j = 0; j < i; j++) {
-//                System.out.println(i + ")" + matche[j]);
-//            }
         }
         theHero.setHeroClass(classHero[input.nextInt()]);
 
-        theHero.setLevel(0);
+        theHero.setLevel(1);
 
         theHero.setExperience(0);
 
         System.out.println("Name of the Attack");
-        theHero.setAttack(input.next());
+        theHero.setAttack(1200);
 
         System.out.println("Name of Defense");
-        theHero.setDefense(input.next());
+        theHero.setDefense(1200);
 
-        theHero.setXCoordinates(this.mapSize(theHero.getLevel())/2);
-        theHero.setXCoordinates(this.mapSize(theHero.getLevel())/2);
+        theHero.setXCoordinates(this.mapSize(theHero.getLevel()) / 2);
+        theHero.setYCoordinates(this.mapSize(theHero.getLevel()) / 2);
         printing.Info(theHero);
-        drawing.drawingTheMap(theHero);
+        Villains villain = new Villains();
+        villains = villain.genVillains(this, theHero);
+        this.drawingTheMap(theHero);
 //        input.close();
-        return(theHero);
+        return (theHero);
     }
 
+    public void genVillains(Hero theeHero) {
 
+        int i = 0;
+        int limit = this.Mapsize;
+        int longitude = 0;
+        int latitude = 0;
+        int chooseVillain = 0;
+        Random rand = new Random();
+        while (i < limit) {
+            //randomize coordinates
+            longitude = rand.nextInt(limit - 1);
+            latitude = rand.nextInt(limit - 1);
+            chooseVillain = rand.nextInt(4);
+            Coordinates coordinates = new Coordinates(longitude, latitude);
+            if (chooseVillain == 1) {
+                Villains villain = new Villains("Zombie" + i, "Zombie", 500, 200, 300, coordinates);
+                this.villains.add(villain);
+            }
+            else if (chooseVillain == 2) {
+                Villains villain = new Villains("Wolf" + i, "Wolf", 800, 300, 500, coordinates);
+                this.villains.add(villain);
+            }
+            else if (chooseVillain == 3) {
+                Villains villain = new Villains("Aliance" + i, "Aliance", 1200, 800, 800, coordinates);
+                this.villains.add(villain);
+            }
+            else {
+                Villains villain = new Villains("Ameture" + i, "Ameture", 200, 50, 100, coordinates);
+                this.villains.add(villain);
+            }
+            i++;
+        }
+    }
 
-//    public static void main(String args[]) {
-//
-//        printing printing = new printing();
-//        FileUpload reader = new FileUpload();
-//        Scanner input = new Scanner(System.in);
-//        drawMap drawing = new drawMap();
-//        Hero theHero = new Hero();
-//        printing.welcome();
-//        System.out.println("1) Create a Hero");
-//        System.out.println("2) Select a Hero");
-//        theHero.levelUp(3);
-//
-//        int number = input.nextInt();
-//        try {
-//            if (number == 1) {
-//                System.out.println("Making a new hero");
-//                Hero hero = drawing.newHero();
-//                hero.keyPressed();
-//            }
-//            if (number == 2) {
-//                System.out.println("Selecting an existing hero");
-//                String[] contents = reader.OpenFile("./heroes.txt");
-//                drawing.selectHero(contents);
-//                int index = input.nextInt();
-//                theHero.selectedHero(index, contents);
-////                Hero hero = drawing.newHero();
-////                hero.keyPressed();
-//            }
-//        } catch (Exception e) {
-//            System.out.println(e.toString());
-//        }
-////        input.close();
-//    }
+    private int checkVill(ArrayList<Villains> villains, int i, int j) {
+        for (int w = 0; w < villains.size(); w++) {
+            if (i == villains.get(w).getCoordinates().get_yPosition() && j == villains.get(w).getCoordinates().get_xPosition())
+                return w;
+        }
+        return -1;
+    }
 }
-
-

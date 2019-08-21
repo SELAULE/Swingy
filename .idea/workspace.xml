@@ -2,20 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fac86d96-da21-452b-96f8-9676c7d59a56" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Villains.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/KeyHandle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/KeyHandle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Heros/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Character.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Heros/Coordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Coordinates.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Heros/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Hero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Heros/HeroStats.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/HeroStats.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Heros/Villains.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/View/drawMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/drawMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/View/printing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/printing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -138,7 +128,7 @@
       <workItem from="1566200281286" duration="4060000" />
       <workItem from="1566285883100" duration="9235000" />
       <workItem from="1566304673422" duration="6535000" />
-      <workItem from="1566370254222" duration="12872000" />
+      <workItem from="1566370254222" duration="15611000" />
     </task>
     <servers />
   </component>

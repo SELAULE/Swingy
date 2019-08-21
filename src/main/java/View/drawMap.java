@@ -44,16 +44,16 @@ public class drawMap {
     }
 
     public void fight(Hero hero, Villains villains) {
-        int continueFight = 0;
         Random rand = new Random();
         int turn = rand.nextInt(1);
-        while (continueFight < 5) {
+        while (villains.getDefense() >= 0 || hero.getDefense() >= 0) {
             if (turn == 1) {
                 System.out.println("Heros turn");
                 System.out.println("Before " + villains.getDefense());
                 villains.setDefense(villains.getDefense() - hero.getAttack());
                 if (villains.getDefense() <= 0) {
                     System.out.println("Heros Won");
+                    this.villains.remove(villains);
                     break;
                 }
                 turn = 0;
@@ -61,15 +61,18 @@ public class drawMap {
             else {
                 System.out.println("Villains turn");
                 System.out.println("Before " + hero.getDefense());
+
                 hero.setDefense(hero.getDefense() - villains.getAttack());
-                if (villains.getDefense() <= 0) {
+                if (hero.getDefense() <= 0) {
                     System.out.println("Villain Won");
+                    printing.gameOver();
                     break;
                 }
                 turn = 1;
             }
-            continueFight++;
+            continue;
         }
+        this.drawingTheMap(hero);
     }
 
 

@@ -4,6 +4,7 @@ import View.drawMap;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -22,6 +23,8 @@ public class Hero extends Character {
     private int Defense;
     private int xCoordinates;
     private int yCoordinates;
+    private int oldYCoordinates;
+    private int oldXCoordinates;
     private String[] HeroType;
 
     //get rid of arraylist
@@ -29,7 +32,7 @@ public class Hero extends Character {
 //    Villains scaryNiggahs = new Villains();
 
 
-    public void keyPressed() {
+    public void keyPressed() throws IOException {
         Scanner input = new Scanner(System.in);
         drawMap drawing = new drawMap();
 
@@ -41,7 +44,7 @@ public class Hero extends Character {
 
             switch (command) {
                 case "exit":
-                    gameOver();
+                    gameOver(this);
                     loop = false;
                     System.exit(0);
 
@@ -81,10 +84,12 @@ public class Hero extends Character {
 //        input.close();
     }
 
-    public void selectedHero(int index, String[] content) {
+    public void selectedHero(int index, String[] content, drawMap drawing) throws IOException {
 //        Hero theHero = new Hero();
-        drawMap drawing = new drawMap();
-        System.out.println(content[index]);
+//        drawMap drawing = new drawMap();
+        for (int z = 0; z < content.length; z++) {
+            System.out.println(content[index]);
+        }
         content = content[index].split(",");
 
         this.setHeroName(content[0]);
@@ -96,9 +101,9 @@ public class Hero extends Character {
         this.setXCoordinates(drawing.mapSize(this.getLevel())/2);
         this.setYCoordinates(drawing.mapSize(this.getLevel())/2);
 
-        drawing.drawingTheMap(this);
+//        drawing.drawingTheMap(this);
 //        this.PlaceVillain(villains);
-        this.keyPressed();
+//        this.keyPressed();
     }
 
     public int randomVillan(int limit) {

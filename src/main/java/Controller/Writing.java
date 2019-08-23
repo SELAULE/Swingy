@@ -6,7 +6,7 @@ import java.io.PrintWriter;
 
 public class Writing {
     private String path;
-    private boolean append = false;
+    private boolean append = true;
 
     public Writing(String path) {
         this.path = path;
@@ -24,5 +24,14 @@ public class Writing {
         printLine.printf("%s" + "%n", message);
 
         printLine.close();
+    }
+
+
+    public static void clearFile(String FileName) throws IOException {
+        FileWriter fwOb = new FileWriter(FileName, false);
+        PrintWriter pwOb = new PrintWriter(fwOb, false);
+        pwOb.flush();
+        pwOb.close();
+        fwOb.close();
     }
 }

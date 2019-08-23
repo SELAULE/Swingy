@@ -7,6 +7,5 @@ Model/Character.class
 View/printing.class
 Controller/FileUpload.class
 Model/Coordinates.class
-Controller/KeyHandle.class
 Model/HeroStats.class
 View/Interface.class

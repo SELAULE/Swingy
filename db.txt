@@ -1,0 +1,4 @@
+Rahul,Angel,1,50,1200,1000
+Ntsako,Angel,1,300,1200,-300
+Tshiamo,Angel,1,300,1200,-100
+Lunga,Angel,1,300,1200,700

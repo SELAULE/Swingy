@@ -5,6 +5,7 @@ import Model.Hero;
 import Model.Villains;
 import lombok.Getter;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -43,7 +44,7 @@ public class drawMap {
 
     }
 
-    public void fight(Hero hero, Villains villains) {
+    public void fight(Hero hero, Villains villains) throws IOException {
         Random rand = new Random();
         int turn = rand.nextInt(1);
         while (villains.getDefense() >= 0 || hero.getDefense() >= 0) {
@@ -53,6 +54,7 @@ public class drawMap {
                 villains.setDefense(villains.getDefense() - hero.getAttack());
                 if (villains.getDefense() <= 0) {
                     System.out.println("Heros Won");
+                    hero.setExperience(hero.getExperiance() + villains.getExperiance());
                     this.villains.remove(villains);
                     break;
                 }
@@ -65,7 +67,7 @@ public class drawMap {
                 hero.setDefense(hero.getDefense() - villains.getAttack());
                 if (hero.getDefense() <= 0) {
                     System.out.println("Villain Won");
-                    printing.gameOver();
+                    printing.gameOver(hero);
                     break;
                 }
                 turn = 1;
@@ -75,16 +77,28 @@ public class drawMap {
         this.drawingTheMap(hero);
     }
 
+    public void run(Hero hero, Villains villains) {
+        Random rand = new Random();
+        int run = rand.nextInt(100);
+        if (run % 2 == 0) {
+            hero.setXCoordinates(hero.getOldXCoordinates());
+            hero.setYCoordinates(hero.getOldYCoordinates());
+            this.drawingTheMap(hero);
+        } else {
+            try {
+                this.fight(hero, villains);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     public void selectHero(String[] content) {
         try {
 //            FileUpload reader = new FileUpload();
             String[] matches = content;
             for (int i = 0; i < matches.length; i++) {
-                String[] matche = matches[i].split(",");
-                for (int j = 0; j < i; j++) {
-                    System.out.println(i + ") " + matche[j]);
-                }
+                System.out.println(i + ") " + matches[i]);
             }
             System.out.print('\n');
             System.out.println("Select a Hero");
@@ -163,7 +177,7 @@ public class drawMap {
         }
     }
 
-    private int checkVill(ArrayList<Villains> villains, int i, int j) {
+    public int checkVill(ArrayList<Villains> villains, int i, int j) {
         for (int w = 0; w < villains.size(); w++) {
             if (i == villains.get(w).getCoordinates().get_yPosition() && j == villains.get(w).getCoordinates().get_xPosition())
                 return w;

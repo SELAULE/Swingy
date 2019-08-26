@@ -1,4 +1,5 @@
 import Controller.FileUpload;
+import Controller.Writing;
 import Model.Hero;
 import View.drawMap;
 import View.printing;
@@ -33,27 +34,34 @@ public class main {
                 System.out.println("Making a new hero");
                 //            hero = drawing.newHero();
                 //    hero.keyPressed();
-        String classHero[] = {"Siyan", "GOD", "Angel", "GrandPriest"};
+                String classHero[] = {"Siyan", "GOD", "Angel", "GrandPriest"};
 
-        System.out.println("Name of the hero");
-        hero.setHeroName(input.next());
+                System.out.println("Name of the hero");
+                hero.setHeroName(input.next());
 
-        System.out.println("Name of the heroClass");
-        for (int i = 0; i < classHero.length; i++) {
-            System.out.println(i + ") " + classHero[i]);
-        }
-        hero.setHeroClass(classHero[input.nextInt()]);
+                System.out.println("Name of the heroClass");
+                for (int i = 0; i < classHero.length; i++) {
+                    System.out.println(i + ") " + classHero[i]);
+                }
+                hero.setHeroClass(classHero[input.nextInt()]);
 
-        hero.setLevel(1);
+                hero.setLevel(1);
 
-        hero.setExperience(1000);
+                hero.setExperience(1000);
 
-        hero.setAttack(1200);
+                hero.setAttack(1200);
 
-        hero.setDefense(1200);
+                hero.setDefense(1200);
 
-        hero.setXCoordinates(drawing.mapSize(hero.getLevel()) / 2);
-        hero.setYCoordinates(drawing.mapSize(hero.getLevel()) / 2);
+                Writing write = new Writing("db.txt", true);
+                String message = hero.getHeroName() + "," + hero.getHeroClass() + "," + hero.getLevel() + "," + hero.getExperience() + "," + hero.getAttack() + "," + hero.getDefense();
+                try {
+                    write.writeToFile(message);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                hero.setXCoordinates(drawing.mapSize(hero.getLevel()) / 2);
+                hero.setYCoordinates(drawing.mapSize(hero.getLevel()) / 2);
             }
             if (number == 2) {
                 System.out.println("Selecting an existing hero");
@@ -81,7 +89,7 @@ public class main {
         //init game loop
         boolean loop = true;
         while (loop) {
-            if ((hero.getXCoordinates() == drawing.getMapsize() - 1 || hero.getYCoordinates() == drawing.getMapsize() - 1 || hero.getXCoordinates() == 0 || hero.getYCoordinates() == 0) && (drawing.checkVill(drawing.getVillains(), hero.getXCoordinates(), hero.getYCoordinates()) == -1 )) {
+            if ((hero.getXCoordinates() == drawing.getMapsize() - 1 || hero.getYCoordinates() == drawing.getMapsize() - 1 || hero.getXCoordinates() == 0 || hero.getYCoordinates() == 0) && (drawing.checkVill(drawing.getVillains(), hero.getXCoordinates(), hero.getYCoordinates()) == -1)) {
                 System.out.println("You Won Niggah");
                 try {
                     printing.savePlayer(hero);
@@ -101,7 +109,6 @@ public class main {
                         e.printStackTrace();
                     }
                     loop = false;
-//                    System.exit(0);
 
                 case "8":
                 case "w":
@@ -113,12 +120,6 @@ public class main {
                     drawing.drawingTheMap(hero);
                     for (int w = 0; w < drawing.getVillains().size(); w++) {
                         if (hero.getYCoordinates() == drawing.getVillains().get(w).getCoordinates().get_yPosition() && hero.getXCoordinates() == drawing.getVillains().get(w).getCoordinates().get_xPosition()) {
-//                            System.out.println("-------------------------------");
-//                            System.out.print("The Villains attack is : " + drawing.getVillains().get(w).getAttack());
-//                            System.out.print(" || The Experience is : " + drawing.getVillains().get(w).getExperiance());
-//                            System.out.println(" || The Villains Defense is : " + drawing.getVillains().get(w).getDefense());
-//                            System.out.println("1) Fight");
-//                            System.out.println("2) Run");
                             printing.showInfo(drawing.getVillains().get(w));
                             int choose = input.nextInt();
                             if (choose == 1) {
@@ -144,12 +145,6 @@ public class main {
                     drawing.drawingTheMap(hero);
                     for (int w = 0; w < drawing.getVillains().size(); w++) {
                         if (hero.getYCoordinates() == drawing.getVillains().get(w).getCoordinates().get_yPosition() && hero.getXCoordinates() == drawing.getVillains().get(w).getCoordinates().get_xPosition()) {
-//                            System.out.println("-------------------------------");
-//                            System.out.print("The Villains attack is : " + drawing.getVillains().get(w).getAttack());
-//                            System.out.print(" || The Experience is : " + drawing.getVillains().get(w).getExperiance());
-//                            System.out.println(" || The Villains Defense is : " + drawing.getVillains().get(w).getDefense());
-//                            System.out.println("1) Fight");
-//                            System.out.println("2) Run");
                             printing.showInfo(drawing.getVillains().get(w));
                             int choose = input.nextInt();
                             if (choose == 1) {
@@ -175,12 +170,6 @@ public class main {
                     drawing.drawingTheMap(hero);
                     for (int w = 0; w < drawing.getVillains().size(); w++) {
                         if (hero.getYCoordinates() == drawing.getVillains().get(w).getCoordinates().get_yPosition() && hero.getXCoordinates() == drawing.getVillains().get(w).getCoordinates().get_xPosition()) {
-//                            System.out.println("-------------------------------");
-//                            System.out.print("The Villains attack is : " + drawing.getVillains().get(w).getAttack());
-//                            System.out.print(" || The Experience is : " + drawing.getVillains().get(w).getExperiance());
-//                            System.out.println(" || The Villains Defense is : " + drawing.getVillains().get(w).getDefense());
-//                            System.out.println("1) Fight");
-//                            System.out.println("2) Run");
                             printing.showInfo(drawing.getVillains().get(w));
                             int choose = input.nextInt();
                             if (choose == 1) {
@@ -206,14 +195,8 @@ public class main {
                     drawing.drawingTheMap(hero);
                     for (int w = 0; w < drawing.getVillains().size(); w++) {
                         if (hero.getYCoordinates() == drawing.getVillains().get(w).getCoordinates().get_yPosition() && hero.getXCoordinates() == drawing.getVillains().get(w).getCoordinates().get_xPosition()) {
-//                            System.out.println("-------------------------------");
-//                            System.out.print("The Villains attack is : " + drawing.getVillains().get(w).getAttack());
-//                            System.out.print(" || The Experience is : " + drawing.getVillains().get(w).getExperiance());
-//                            System.out.println(" || The Villains Defense is : " + drawing.getVillains().get(w).getDefense());
-//                            System.out.println("1) Fight");
-//                            System.out.println("2) Run");
                             printing.showInfo(drawing.getVillains().get(w));
-                            String  choose = input.next();
+                            String choose = input.next();
                             if (!choose.equals("1") || !choose.equals("2")) {
                                 System.out.println("Invalid option choose 1 or 2");
                             } else if (choose.equals("1")) {

@@ -40,33 +40,23 @@ public class drawMap {
         }
     }
 
-    public void initGame() {
-
-    }
-
     public void fight(Hero hero, Villains villains) throws IOException {
         Random rand = new Random();
         int turn = rand.nextInt(1);
         while (villains.getDefense() >= 0 || hero.getDefense() >= 0) {
             if (turn == 1) {
-                System.out.println("Heros turn");
-                System.out.println("Before " + villains.getDefense());
                 villains.setDefense(villains.getDefense() - hero.getAttack());
                 if (villains.getDefense() <= 0) {
-                    System.out.println("Heros Won");
                     hero.setExperience(hero.getExperiance() + villains.getExperiance());
                     this.villains.remove(villains);
+                    if (hero.getExperience())
                     break;
                 }
                 turn = 0;
             }
             else {
-                System.out.println("Villains turn");
-                System.out.println("Before " + hero.getDefense());
-
                 hero.setDefense(hero.getDefense() - villains.getAttack());
                 if (hero.getDefense() <= 0) {
-                    System.out.println("Villain Won");
                     printing.gameOver(hero);
                     break;
                 }

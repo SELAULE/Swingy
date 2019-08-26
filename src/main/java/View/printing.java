@@ -54,7 +54,7 @@ public class printing {
             while (i < aryLines.length) {
                 if (aryLines[i].contains(theHero.getHeroName() + ',')) {
 //                    WritePlayer(hero);
-                    System.out.println("FOUND IT: " + theHero.getHeroName());
+//                    System.out.println("FOUND IT: " + theHero.getHeroName());
                     aryLines[i] = theHero.getHeroName() + "," + theHero.getHeroClass() + "," + theHero.getLevel() + "," + theHero.getExperience() + "," + theHero.getAttack() + "," + theHero.getDefense();
                     ;
                 }

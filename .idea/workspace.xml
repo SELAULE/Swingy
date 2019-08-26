@@ -3,15 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="fac86d96-da21-452b-96f8-9676c7d59a56" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/KeyHandle.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Writing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Writing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Hero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.txt" beforeDir="false" afterPath="$PROJECT_DIR$/db.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/View/drawMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/drawMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/View/printing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/printing.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -138,6 +134,7 @@
       <workItem from="1566479445255" duration="922000" />
       <workItem from="1566546108817" duration="7155000" />
       <workItem from="1566566314902" duration="749000" />
+      <workItem from="1566800877377" duration="4820000" />
     </task>
     <servers />
   </component>
